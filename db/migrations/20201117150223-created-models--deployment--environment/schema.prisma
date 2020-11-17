@@ -3,7 +3,7 @@
 
 datasource db {
   provider = "sqlite"
-  url      = env("DATABASE_URL")
+  url = "***"
 }
 
 generator client {
@@ -47,7 +47,6 @@ model Project {
   userId      Int
   color       String       @default("#fff00")
   deployments Deployment[]
-  active      Boolean      @default(true)
 }
 
 model Deployment {
@@ -56,16 +55,16 @@ model Deployment {
   updatedAt     DateTime    @updatedAt
   url           String
   environment   Environment @relation(fields: [environmentId], references: [id])
-  project       Project?    @relation(fields: [projectId], references: [id])
+  Project       Project?    @relation(fields: [projectId], references: [id])
   projectId     Int?
   environmentId Int
 }
 
 model Environment {
-  id          Int          @id @default(autoincrement())
-  createdAt   DateTime     @default(now())
-  updatedAt   DateTime     @updatedAt
-  name        String
-  color       String
-  deployments Deployment[]
+  id         Int          @id @default(autoincrement())
+  createdAt  DateTime     @default(now())
+  updatedAt  DateTime     @updatedAt
+  name       String
+  color      String
+  Deployment Deployment[]
 }

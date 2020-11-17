@@ -1,0 +1,8 @@
+# Prisma Migrate lockfile v1
+
+20201117140736-initial-migration
+20201117144329-created-project-model
+20201117145620-added-color-field-to-project-model
+20201117150223-created-models--deployment--environment
+20201117151108-refactored
+20201117204003-changed-model-deployment--project----project

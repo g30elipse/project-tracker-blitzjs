@@ -1,3 +1,4 @@
+import { Button } from "@material-ui/core"
 import React, { ReactNode, PropsWithoutRef } from "react"
 import { Form as FinalForm, FormProps as FinalFormProps } from "react-final-form"
 import * as z from "zod"
@@ -44,9 +45,9 @@ export function Form<S extends z.ZodType<any, any>>({
             </div>
           )}
 
-          <button type="submit" disabled={submitting}>
+          <Button type="submit" variant='outlined' color='primary' disabled={submitting}>
             {submitText}
-          </button>
+          </Button>
 
           <style global jsx>{`
             .form > * + * {
