@@ -2,17 +2,21 @@ import React, { FC } from 'react';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import { Box, darken, Typography } from '@material-ui/core';
 import { Environment } from '@prisma/client';
+import { Link } from 'blitz';
 
 export interface BadgeProps {
     environment: Environment
 }
 
 const Badge: FC<BadgeProps> = (props) => {
-    const classes = useStyles({ color: props.environment.color });
+    const { environment } = props;
+    const classes = useStyles({ color: environment.color });
     return (
-        <span className={classes.root}>
-            <Typography color='inherit' variant='caption'>{props.environment.name.toUpperCase()}</Typography>
-        </span>
+        <Link href={`/environments/${environment.id}/edit`}>
+            <span className={classes.root}>
+                <Typography color='inherit' variant='caption'>{environment.name.toUpperCase()}</Typography>
+            </span>
+        </Link>
     )
 }
 

@@ -53,6 +53,6 @@ const EditDeploymentPage: BlitzPage = () => {
   )
 }
 
-EditDeploymentPage.getLayout = (page) => <Layout title={"Edit Deployment"}>{page}</Layout>
+EditDeploymentPage.getLayout = (page) => <Layout isContainer title={"Edit Deployment"}>{page}</Layout>
 
 export default EditDeploymentPage

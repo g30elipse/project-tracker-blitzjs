@@ -28,8 +28,8 @@ const EnvironmentListWidget: FC<EnvironmentListWidgetProps> = (props) => {
                     </Box>
                 ))}
             </Box>
-            <Link href='/environments'>
-                <Button variant='outlined' color='primary'>ALL ENVIRONMENTS</Button>
+            <Link href='/environments/new'>
+                <Button variant='outlined' color='primary'>NEW</Button>
             </Link>
         </Card>
     )

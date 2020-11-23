@@ -7,13 +7,14 @@ export interface LabeledTextFieldProps extends PropsWithoutRef<JSX.IntrinsicElem
   name: string
   /** Field label. */
   label: string
+  fullWidth?: boolean
   /** Field type. Doesn't include radio buttons and checkboxes */
   type?: "text" | "password" | "email" | "number"
   outerProps?: PropsWithoutRef<JSX.IntrinsicElements["div"]>
 }
 
 export const LabeledTextField = React.forwardRef<HTMLInputElement, LabeledTextFieldProps>(
-  ({ name, label, outerProps, ...props }, ref) => {
+  ({ name, fullWidth, label, outerProps, ...props }, ref) => {
     const {
       input,
       meta: { touched, error, submitError, submitting },
@@ -23,7 +24,7 @@ export const LabeledTextField = React.forwardRef<HTMLInputElement, LabeledTextFi
 
     return (
       <div {...outerProps}>
-        <TextField error={touched && normalizedError} helperText={normalizedError} label={label} inputProps={{ ...input, ...props }} ref={ref} />
+        <TextField fullWidth={fullWidth} error={touched && normalizedError} helperText={normalizedError} label={label} inputProps={{ ...input, ...props }} ref={ref} />
       </div>
     )
   },

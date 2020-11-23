@@ -1,22 +1,26 @@
+import { EnvironmentCreateInput } from "@prisma/client"
+import ColorPickerField from "app/components/ColorPickerField"
+import Form from "app/components/Form"
+import LabeledTextField from "app/components/LabeledTextField"
 import React from "react"
 
 type EnvironmentFormProps = {
   initialValues: any
-  onSubmit: React.FormEventHandler<HTMLFormElement>
+  onSubmit: (data: EnvironmentCreateInput) => void
 }
 
 const EnvironmentForm = ({ initialValues, onSubmit }: EnvironmentFormProps) => {
   return (
-    <form
-      onSubmit={(event) => {
-        event.preventDefault()
-        onSubmit(event)
-      }}
+    <Form
+      submitText="SAVE"
+      // schema={LoginInput}
+      initialValues={initialValues}
+      onSubmit={onSubmit}
     >
-      <div>Put your form fields here. But for now, just click submit</div>
-      <div>{JSON.stringify(initialValues)}</div>
-      <button>Submit</button>
-    </form>
+
+      <LabeledTextField fullWidth label="Name" name="name" placeholder="development" />
+      <ColorPickerField label="Color" name='color' />
+    </Form>
   )
 }
 

@@ -9,7 +9,6 @@ const NewDeploymentPage: BlitzPage = () => {
 
   return (
     <div>
-      <h1>Create New Deployment</h1>
 
       <DeploymentForm
         initialValues={{}}

@@ -1,5 +1,6 @@
-import { Box, Input } from "@material-ui/core"
+import { Box, Input, Typography } from "@material-ui/core"
 import { ProjectCreateInput } from "@prisma/client"
+import ColorPickerField from "app/components/ColorPickerField"
 import Form from "app/components/Form"
 import LabeledTextField from "app/components/LabeledTextField"
 import React from "react"
@@ -28,10 +29,8 @@ const ProjectForm = ({ initialValues, onSubmit }: ProjectFormProps) => {
       onSubmit={onSubmit}
     >
 
-      <LabeledTextField label="Project Name" name="name" placeholder="My cool project" />
-      <Box width='100%' height={20}>
-        <Input type='color' fullWidth />
-      </Box>
+      <LabeledTextField fullWidth label="Project Name" name="name" placeholder="My cool project" />
+      <ColorPickerField label="Color" name='color' />
     </Form>
   )
 }

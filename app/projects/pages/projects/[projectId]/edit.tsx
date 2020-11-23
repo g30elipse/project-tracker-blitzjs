@@ -1,9 +1,10 @@
-import { Suspense } from "react"
+import React, { Suspense } from "react"
 import Layout from "app/layouts/Layout"
 import { Link, useRouter, useQuery, useMutation, useParam, BlitzPage } from "blitz"
 import getProject from "app/projects/queries/getProject"
 import updateProject from "app/projects/mutations/updateProject"
 import ProjectForm from "app/projects/components/ProjectForm"
+import { Box } from "@material-ui/core"
 
 export const EditProject = () => {
   const router = useRouter()
@@ -13,26 +14,25 @@ export const EditProject = () => {
 
   return (
     <div>
-      <h1>Edit Project {project.id}</h1>
-      <pre>{JSON.stringify(project)}</pre>
-
-      <ProjectForm
-        initialValues={{ active: project.active, color: project.color, name: project.name }}
-        onSubmit={async (formData) => {
-          try {
-            const updated = await updateProjectMutation({
-              where: { id: project.id },
-              data: formData,
-            })
-            await setQueryData({ ...project, ...updated })
-            alert("Success!" + JSON.stringify(updated))
-            router.push(`/projects/${updated.id}`)
-          } catch (error) {
-            console.log(error)
-            alert("Error creating project " + JSON.stringify(error, null, 2))
-          }
-        }}
-      />
+      <Box width={600} py={4}>
+        <ProjectForm
+          initialValues={{ active: project.active, color: project.color, name: project.name }}
+          onSubmit={async (formData) => {
+            try {
+              const updated = await updateProjectMutation({
+                where: { id: project.id },
+                data: formData,
+              })
+              await setQueryData({ ...project, ...updated })
+              alert("Success!" + JSON.stringify(updated))
+              router.push(`/projects/${updated.id}`)
+            } catch (error) {
+              console.log(error)
+              alert("Error creating project " + JSON.stringify(error, null, 2))
+            }
+          }}
+        />
+      </Box>
     </div>
   )
 }

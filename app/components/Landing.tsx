@@ -15,7 +15,7 @@ export interface LandingProps {
 
 const Landing: FC<LandingProps> = (props) => {
     const classes = useStyles();
-    const [{ projects, count }] = usePaginatedQuery(getProjects, {
+    const [{ projects, count: projectCount }] = usePaginatedQuery(getProjects, {
         take: 10
     })
     const [{ environments, count: envCount }] = usePaginatedQuery(getEnvironments, {
@@ -25,12 +25,11 @@ const Landing: FC<LandingProps> = (props) => {
         take: 10
     })
 
-    console.log("project", projects)
     return (
         <Box maxWidth='1200px' mx='auto' py={10}>
             <Grid container spacing={8}>
                 <Grid item md={7}>
-                    <ProjectListWidget count={count} projects={projects} />
+                    <ProjectListWidget count={projectCount} projects={projects} />
                 </Grid>
                 <Grid item md={5}>
                     <EnvironmentListWidget count={envCount} environments={environments} />
